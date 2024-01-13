@@ -8,7 +8,7 @@
   </p>
 </div>
 
-# 【 ADES DIT/FT/2B/25 Group 1's Project v4.0.0】
+# 【 SIP Team 1's Project v4.0.0】
 
 This project was a full-stack application developed for the Sustainable Innovation Project module at Singapore Polytechnic, as part of the Diploma in Information Technology Course. T
 
