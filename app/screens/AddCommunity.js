@@ -10,15 +10,15 @@ import {
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colorPalette from "../config/colours";
-import CommunityList from "../components/communityList";
-const CommunityScreen = () => {
+import AddCommunityList from "../components/addCommunityList";
+const AddCommunityScreen = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
         style={styles.settingsButton}
-        onPress={() => navigation.navigate("SettingsPlaceholderScreen")}
+        onPress={() => {alert("You have join the community sucessfully")}}
       ></TouchableOpacity>
-      <CommunityList data={data} title="Joined Communities" />
+      <AddCommunityList data={data} title="Popular Communities" />
       <MaterialCommunityIcons name="chat" size={50} color="black" />
     </View>
   );
@@ -39,27 +39,27 @@ const data = [
   {
     key: "1",
     heading: "Guitar Lover (Bishan)",
-    streakCount: "26",
-    skillAddedOnDate: "12/29/2022"
+    currentMenber: "26",
+    communityFoundedAt: "12/29/2021"
   },
   {
     key: "2",
     heading: "Easy learn German",
-    streakCount: "14",
-    skillAddedOnDate: "11/15/2022"
+    currentMenber: "30",
+    communityFoundedAt: "12/29/2020"
   },
   {
     key: "3",
     heading: "Only Water(Ang Mo kio)",
-    streakCount: "2",
-    skillAddedOnDate: "1/5/2023"
+    currentMenber: "20",
+    communityFoundedAt: "3/31/2022"
   },
   {
     key: "4",
-    heading: "Join a New community!",
-    url:"AddCommunity",
-    streakCount: "",
-    skillAddedOnDate: ""
+    heading: "Bishan English helpers",
+    currentMenber: "200",
+    communityFoundedAt: "3/31/2020"
   },
 ];
-export default CommunityScreen;
+
+export default AddCommunityScreen;
