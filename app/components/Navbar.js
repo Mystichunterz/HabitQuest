@@ -11,6 +11,7 @@ import InboxScreen from "../screens/InboxScreen.js";
 import CommunityScreen from "../screens/CommunityScreen.js";
 import SettingsPlaceholderScreen from "../screens/SettingsScreen.js";
 import UserProfileScreen from "../screens/UserProfileScreen.js";
+import StudyResourcesScreen from "../screens/StudyResourcesScreen.js";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -77,6 +78,15 @@ const Navbar = () => {
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="group" size={size} color={color} />
+          ),
+        }}
+      />
+            <Tab.Screen
+        name="Resources"
+        component={StudyResourcesScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="menu-book" size={size} color={color} />
           ),
         }}
       />
