@@ -51,7 +51,7 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.signUpText}>
         <Text>Don't have an account? </Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate("StudentSignUpScreen")}
+          onPress={() => navigation.navigate("SignUpScreen")}
         >
           <Text style={styles.link}>Sign Up</Text>
         </TouchableOpacity>

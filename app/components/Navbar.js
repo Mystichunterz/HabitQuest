@@ -15,11 +15,11 @@ import UserProfileScreen from "../screens/UserProfileScreen.js";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-const StudentHomeScreen = () => {
+const HomeScreen = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Student Home"
+        name="Home"
         component={Navbar}
         options={{
           headerShown: false,
@@ -93,4 +93,4 @@ const Navbar = () => {
   );
 };
 
-export default StudentHomeScreen;
+export default HomeScreen;

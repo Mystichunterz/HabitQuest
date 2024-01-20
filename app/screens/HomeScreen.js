@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colorPalette from "../config/colours";
 
-import TutorList from "../components/skillList";
+import SkillList from "../components/skillList";
 
 const MainMenuScreen = ({ navigation }) => {
   return (
@@ -39,7 +39,7 @@ const MainMenuScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <TutorList data={data} title="Ongoing Habits & Skills" />
+      <SkillList data={data} title="Ongoing Habits & Skills" />
     </View>
   );
 };
