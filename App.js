@@ -5,8 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './app/screens/LoginScreen';
 import SignupScreen from './app/screens/SignupScreen';
 import HomeScreen from './app/components/Navbar';
-
-
+import CommunityScreen from './app/screens/CommunityScreen';
+import AddCommunityScreen from './app/screens/AddCommunity';
 const Stack = createStackNavigator();
 
 
@@ -29,6 +29,16 @@ export default function App() {
       <Stack.Screen 
         name="Home" 
         component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen 
+        name="Community" 
+        component={CommunityScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen 
+        name="AddCommunity" 
+        component={AddCommunityScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
