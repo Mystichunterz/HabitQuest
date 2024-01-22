@@ -4,8 +4,16 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colorPalette from "../config/colours";
 
 import SkillList from "../components/skillList";
+import StreakDisplay from '../components/streakDisplay'; // Adjust the path as necessary
+
 
 const MainMenuScreen = ({ navigation }) => {
+  const handleSelectSkill = (skill) => {
+    // Implement navigation logic here
+    // For example:
+    navigation.navigate('SkillDetailScreen', { skill });
+  };
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -19,27 +27,14 @@ const MainMenuScreen = ({ navigation }) => {
         />
       </TouchableOpacity>
 
-      <View style={styles.userProfileContainer}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("UserProfileScreen");
-          }}
-        >
-          <View style={styles.userProfile}>
-            <View style={styles.userProfilePicture}>
-              {/* Profile Picture */}
-            </View>
-            <View style={styles.userProfileDetails}>
-              <Text style={styles.userProfileName}>Slug Pickle</Text>
-              <Text style={styles.userProfileEmail}>
-                slugpickle.11@gmail.com
-              </Text>
-            </View>
-          </View>
-        </TouchableOpacity>
-      </View>
+      <StreakDisplay streakData={streakData} />
 
-      <SkillList data={data} title="Ongoing Habits & Skills" />
+      <SkillList 
+        data={data} 
+        title="Ongoing Habits & Skills" 
+        onAddNew={() => navigation.navigate('AddNewSkillScreen')}
+        onSelectSkill={handleSelectSkill}
+      />
     </View>
   );
 };
@@ -102,6 +97,47 @@ const styles = StyleSheet.create({
     alignItems: "center",
     color: "#121212",
   },
+  streakContainer: {
+    alignSelf: "stretch",
+    alignItems: "center",
+    marginTop: 60,
+    padding: 24,
+  },
+  streakNumber: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: colorPalette.primary,
+  },
+  streakMessage: {
+    fontSize: 18,
+    color: colorPalette.primary,
+    textAlign: "center",
+    marginVertical: 10,
+  },
+  weekCircles: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
+  },
+  dayContainer: {
+    alignItems: "center",
+  },
+  dayNumber: {
+    fontSize: 16,
+    color: colorPalette.primary,
+  },
+  dayCircle: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    marginTop: 5,
+  },
+  circleFilled: {
+    backgroundColor: colorPalette.primary,
+  },
+  circleEmpty: {
+    backgroundColor: colorPalette.secondary,
+  },
 });
 
 const data = [
@@ -123,12 +159,20 @@ const data = [
     streakCount: "2",
     skillAddedOnDate: "1/5/2023"
   },
-  {
-    key: "4",
-    heading: "Add a new Skill or Habit!",
-    streakCount: "",
-    skillAddedOnDate: ""
-  },
 ];
 
+const streakData = {
+  currentStreak: 5, // This represents the current streak count
+  weekData: [
+    { dayNumber: 'Mon', completed: true },
+    { dayNumber: 'Tue', completed: true },
+    { dayNumber: 'Wed', completed: true },
+    { dayNumber: 'Thu', completed: false },
+    { dayNumber: 'Fri', completed: false },
+    { dayNumber: 'Sat', completed: false },
+    { dayNumber: 'Sun', completed: false },
+  ],
+};
+
 export default MainMenuScreen;
+

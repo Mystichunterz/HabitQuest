@@ -7,6 +7,8 @@ import SignupScreen from './app/screens/SignupScreen';
 import HomeScreen from './app/components/Navbar';
 import CommunityScreen from './app/screens/CommunityScreen';
 import AddCommunityScreen from './app/screens/AddCommunity';
+import SplashScreen from './app/screens/SplashScreen';
+import SkillDetailScreen from './app/screens/SkillDetailScreen';
 const Stack = createStackNavigator();
 
 
@@ -15,7 +17,12 @@ export default function App() {
     <NavigationContainer>
     <Stack.Navigator screenOptions={{
         headerShadowVisible: false,
-      }} initialRouteName="Login">
+      }} initialRouteName="Splash">
+      <Stack.Screen 
+        name="Splash" 
+        component={SplashScreen}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen 
         name="Login" 
         options={{ headerShown: false }}
@@ -40,6 +47,10 @@ export default function App() {
         name="AddCommunity" 
         component={AddCommunityScreen}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen 
+        name="SkillDetailScreen" 
+        component={SkillDetailScreen} 
       />
     </Stack.Navigator>
   </NavigationContainer>

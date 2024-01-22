@@ -6,4 +6,5 @@ export default {
   blue: "#02B8FE",
   black: "#121212",
   titleBlue: "#3C4D78",
+  pastelGreen: "#60F254",
 };

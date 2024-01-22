@@ -8,7 +8,43 @@ import {
 } from "react-native";
 import colorPalette from "../config/colours";
 
-const skillList = ({ data, title }) => {
+const skillList = ({ data, title, onAddNew, onSelectSkill }) => {
+  const renderItem = ({ item }) => {
+    if (item.isAddNew) {
+      return (
+        <TouchableOpacity
+          style={styles.addNewContainer}
+          onPress={onAddNew}
+        >
+          <Text style={styles.addNewText}>Add a new Skill or Habit!</Text>
+        </TouchableOpacity>
+      );
+    }
+
+    return (
+      <TouchableOpacity
+        style={styles.listContainer}
+        onPress={() => onSelectSkill(item)}
+      >
+        <View style={styles.listBar}>
+          <View style={styles.listBarImage}>{/* Image or red fill */}</View>
+          <View style={styles.listBarDetails}>
+            <Text style={styles.listBarHeading}>{item.heading}</Text>
+            <Text style={styles.listBarstreakCount}>
+              Current Streak: {item.streakCount}
+            </Text>
+            <Text style={styles.skillAddedOn}>
+              Added on: {item.skillAddedOnDate}
+            </Text>
+            <Text style={styles.skillListViewMore}>
+              View More
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <View style={styles.dragContainer}>
       <View style={styles.dragHeader}>
@@ -24,31 +60,9 @@ const skillList = ({ data, title }) => {
       </View>
 
       <FlatList
-        data={data}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.listContainer}
-            onPress={() => {
-              navigateToCustomPage(item);
-            }}
-          >
-            <View style={styles.listBar}>
-              <View style={styles.listBarImage}>{/* Image or red fill */}</View>
-              <View style={styles.listBarDetails}>
-                <Text style={styles.listBarHeading}>{item.heading}</Text>
-                <Text style={styles.listBarstreakCount}>
-                  Current Streak: {item.streakCount}
-                </Text>
-                <Text style={styles.skillAddedOn}>
-                  Added on: {item.skillAddedOnDate}
-                </Text>
-                <Text style={styles.skillListViewMore}>
-                  View More
-                </Text>
-              </View>
-            </View>
-          </TouchableOpacity>
-        )}
+        data={[...data, { isAddNew: true }]} // Append the special item
+        renderItem={renderItem}
+        keyExtractor={(item, index) => item.key || `add-new-${index}`}
       />
     </View>
   );
@@ -125,6 +139,19 @@ const styles = StyleSheet.create({
   skillListViewMore: {
     fontSize: 14,
     color: colorPalette.titleBlue,
+  },
+  addNewContainer: {
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    backgroundColor: colorPalette.primary,
+    borderRadius: 25,
+    padding: 20,
+    marginBottom: 24,
+  },
+  addNewText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colorPalette.blue,
   },
 });
 

@@ -22,6 +22,7 @@ const HomeScreen = () => {
       <Stack.Screen
         name="Home"
         component={Navbar}
+        initialParams={{ streakData: streakData }}
         options={{
           headerShown: false,
         }}
@@ -79,15 +80,17 @@ const Navbar = () => {
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="group" size={size} color={color} />
           ),
+          headerShown: false,
         }}
       />
-            <Tab.Screen
+      <Tab.Screen
         name="Resources"
         component={StudyResourcesScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="menu-book" size={size} color={color} />
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -101,6 +104,19 @@ const Navbar = () => {
       />
     </Tab.Navigator>
   );
+};
+
+const streakData = {
+  currentStreak: 5,
+  weekData: [
+    { dayNumber: 'Mon', completed: true },
+    { dayNumber: 'Tue', completed: true },
+    { dayNumber: 'Wed', completed: true },
+    { dayNumber: 'Thu', completed: false },
+    { dayNumber: 'Fri', completed: false },
+    { dayNumber: 'Sat', completed: false },
+    { dayNumber: 'Sun', completed: false },
+  ],
 };
 
 export default HomeScreen;

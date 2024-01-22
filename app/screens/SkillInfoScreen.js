@@ -11,7 +11,7 @@ import {
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colorPalette from "../config/colours";
 
-const ChatPlaceholderScreen = () => {
+const SkillInfoScreen = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text>Skill Info Placeholder!</Text>
@@ -21,4 +21,4 @@ const ChatPlaceholderScreen = () => {
   );
 };
 
-export default ChatPlaceholderScreen;
+export default SkillInfoScreen;
